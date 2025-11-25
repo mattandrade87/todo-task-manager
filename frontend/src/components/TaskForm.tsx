@@ -49,7 +49,7 @@ export function TaskForm({ onSave, editingTask, onCancelEdit }: TaskFormProps) {
           <button
             type="submit"
             disabled={!title.trim()}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-colors"
+            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-colors"
           >
             {editingTask ? <Save size={20} /> : <PlusCircle size={20} />}
             {editingTask ? "Salvar Alterações" : "Criar Tarefa"}

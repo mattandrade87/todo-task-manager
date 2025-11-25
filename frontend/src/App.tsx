@@ -90,8 +90,10 @@ function App() {
     <div className="min-h-screen text-zinc-100 p-4 md:p-8 font-sans">
       <div className="max-w-2xl mx-auto">
         <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-blue-500 mb-2">Todo List</h1>
-          <p className="text-gray-500">Gerencie suas tarefas diárias</p>
+          <h1 className="text-5xl font-semibold text-blue-500 mb-2">
+            Todo List
+          </h1>
+          <p className="text-white text-lg">Gerencie suas tarefas diárias</p>
         </header>
 
         <TaskForm
@@ -100,15 +102,15 @@ function App() {
           onCancelEdit={() => setEditingTask(null)}
         />
 
-        <div className="space-y-4">
-          <div className="flex justify-between items-center text-sm text-zinc-400 px-1">
+        <div className="space-y-2">
+          <div className="flex justify-between items-center text-sm text-gray-100 px-1">
             <span>
               Tarefas criadas:{" "}
-              <strong className="text-zinc-100">{tasks.length}</strong>
+              <strong className="text-white">{tasks.length}</strong>
             </span>
             <span>
               Concluídas:{" "}
-              <strong className="text-zinc-100">
+              <strong className="text-white">
                 {tasks.filter((t) => t.isDone).length}
               </strong>
             </span>

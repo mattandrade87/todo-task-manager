@@ -11,7 +11,7 @@ interface TaskItemProps {
 export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
   return (
     <div
-      className={`group p-4 rounded-lg flex items-start justify-between gap-4 transition-all border border-zinc-700/50 
+      className={`group p-4 rounded-lg flex items-center justify-between gap-4 transition-all border border-zinc-700/50 
       ${
         task.isDone
           ? "bg-zinc-900/50 opacity-60"
@@ -20,7 +20,7 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
     >
       <button
         onClick={() => onToggle(task)}
-        className="mt-1 text-blue-500 hover:text-blue-400 transition-colors"
+        className="self-center text-blue-500 hover:text-blue-400 transition-colors cursor-pointer"
         title={task.isDone ? "Marcar como pendente" : "Concluir tarefa"}
       >
         {task.isDone ? <CheckCircle size={24} /> : <Circle size={24} />}
@@ -45,17 +45,17 @@ export function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
         )}
       </div>
 
-      <div className="flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+      <div className="flex gap-2 items-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-pointer">
         <button
           onClick={() => onEdit(task)}
-          className="text-zinc-400 hover:text-blue-400 p-2 hover:bg-zinc-700/50 rounded transition-colors"
+          className="text-zinc-400 hover:text-blue-400 cursor-pointer p-2 hover:bg-zinc-700/50 rounded transition-colors"
           title="Editar"
         >
           <Edit2 size={18} />
         </button>
         <button
           onClick={() => onDelete(task.id)}
-          className="text-zinc-400 hover:text-red-400 p-2 hover:bg-zinc-700/50 rounded transition-colors"
+          className="text-zinc-400 cursor-pointer hover:text-red-400 p-2 hover:bg-zinc-700/50 rounded transition-colors"
           title="Excluir"
         >
           <Trash2 size={18} />
