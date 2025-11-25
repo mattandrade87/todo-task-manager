@@ -16,7 +16,7 @@ export function TaskForm({ onSave, editingTask, onCancelEdit }: TaskFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return;
+    if (!title.trim() || !description.trim()) return;
     await onSave(title, description);
 
     if (!editingTask) {
@@ -39,7 +39,7 @@ export function TaskForm({ onSave, editingTask, onCancelEdit }: TaskFormProps) {
           autoFocus
         />
         <textarea
-          placeholder="Descrição (opcional)"
+          placeholder="Descrição"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="bg-zinc-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 resize-none placeholder:text-zinc-400"
@@ -48,7 +48,7 @@ export function TaskForm({ onSave, editingTask, onCancelEdit }: TaskFormProps) {
         <div className="flex gap-2">
           <button
             type="submit"
-            disabled={!title.trim()}
+            disabled={!title.trim() || !description.trim()}
             className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-colors"
           >
             {editingTask ? <Save size={20} /> : <PlusCircle size={20} />}
