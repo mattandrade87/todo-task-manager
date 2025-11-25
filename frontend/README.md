@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Task Manager - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o frontend do projeto **Task Manager**, uma aplicação para gerenciamento de tarefas, desenvolvida com React, TypeScript e Vite.
 
-Currently, two official plugins are available:
+## 📋 Descrição
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O Task Manager permite criar, visualizar, atualizar e excluir tarefas de forma simples e intuitiva. O frontend consome uma API desenvolvida em NestJS (localizada na pasta `backend/`).
 
-## React Compiler
+## 🚀 Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Axios](https://axios-http.com/)
 
-## Expanding the ESLint configuration
+## 🔗 Backend
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O backend está localizado na pasta `../backend` e deve ser iniciado separadamente primeiro, antes do frontend ser iniciado. Consulte o README do backend para instruções.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Instalação
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone o repositório
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```bash
+   git clone https://github.com/mattandrade87/todo-task-manager.git
+   ```
+
+2. Acesse a pasta do frontend:
+   ```bash
+   cd frontend
+   ```
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+4. Configuração das Variáveis de Ambiente: Crie um arquivo .env na raiz da pasta backend. Você pode usar o exemplo abaixo ou o .env.example:
+
+# .env
+
+# Substitua os valores conforme suas credenciais do banco
+
+VITE_API_URL=http://localhost:3000
+
+## 🏃‍♂️ Executando o Projeto
+
+1. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+2. Acesse [http://localhost:5173](http://localhost:5173) no seu navegador.
+
+> **Nota:** Certifique-se de que o backend está rodando para que as requisições funcionem corretamente.
+
+## ⚙️ Estrutura de Pastas
+
+```
+frontend/
+├── public/                # Arquivos estáticos
+├── src/
+│   ├── assets/            # Imagens e outros assets
+│   ├── components/        # Componentes React reutilizáveis
+│   ├── services/          # Serviços de API
+│   ├── types/             # Tipagens TypeScript
+│   ├── App.tsx            # Componente principal
+│   └── main.tsx           # Ponto de entrada
+├── package.json           # Dependências e scripts
+└── vite.config.ts         # Configuração do Vite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📑 Funcionalidades
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Listar tarefas
+- Criar nova tarefa
+- Editar tarefa existente
+- Excluir tarefa
+- Interface responsiva
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 👤 Autor
+
+- [Mateus Andrade](https://github.com/mattandrade87)
