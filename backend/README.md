@@ -10,53 +10,37 @@ Esta é a API RESTful do projeto Task Manager, desenvolvida para gerenciar taref
 - **Prisma ORM** (Interação com Banco de Dados)
 - **PostgreSQL**
 - **Class Validator** (Validação de DTOs)
+- **Docker** (Containerização)
 
-## 📦 Pré-requisitos
 
-Antes de começar, certifique-se de ter instalado em sua máquina:
+---
 
-- [Node.js](https://nodejs.org/en/) (v18 ou superior)
-- [npm](https://www.npmjs.com/) (gerenciador de pacotes)
-- Um banco de dados PostgreSQL rodando localmente.
+## 🐳 Executando com Docker (Recomendado)
 
-## 🔧 Instalação e Configuração
+A forma recomendada de executar o frontend é através do Docker Compose na raiz do projeto. O frontend será iniciado automaticamente junto com o backend e banco de dados.
 
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/mattandrade87/todo-task-manager](https://github.com/mattandrade87/todo-task-manager)
-   ```
-2. **Acesse a pasta do backend:**
+### Pré-requisitos
 
-```bash
-    cd nome-do-repositorio/backend
-```
+- [Docker](https://www.docker.com/get-started) instalado
+- [Docker Compose](https://docs.docker.com/compose/install/) instalado
 
-3. **Instale as dependências:**
+### 1. Clone o repositório
 
 ```bash
-    npm install
+ git clone https://github.com/mattandrade87/todo-task-manager.git
+ cd todo-task-manager
 ```
 
-4. **Configuração das Variáveis de Ambiente:** Crie um arquivo .env na raiz da pasta backend. Você pode usar o exemplo abaixo:
-
-# .env
-
-# Substitua os valores conforme suas credenciais do banco
-
-DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco?schema=public"
-PORT=3000
-
-5. **Configuração do Banco de Dados (Prisma):** Execute as migrações para criar as tabelas no banco de dados:
+### 2. Execute o comando abaixo para subir todos os serviços:
 
 ```bash
-   npx prisma migrate dev --name init
+ docker-compose up
 ```
 
-6. **Para iniciar o servidor em modo de desenvolvimento (com auto-reload):**
-
-```bash
-    npm run start:dev
-```
+### 3. Acesse a aplicação:
+	- **Frontend**: [http://localhost:5173](http://localhost:5173)
+	- **Backend API**: [http://localhost:3000](http://localhost:3000)
+	- **PostgreSQL**: `localhost:5432`
 
 ---
 
@@ -64,6 +48,8 @@ PORT=3000
 
 ```
 backend/
+├── Dockerfile
+├── docker-entrypoint.sh
 ├── eslint.config.mjs
 ├── nest-cli.json
 ├── package.json
@@ -77,20 +63,19 @@ backend/
 │       ├── migration_lock.toml
 │       └── 20251125123052_init/
 │           └── migration.sql
-├── src/
-│   ├── app.module.ts
-│   ├── main.ts
-│   ├── prisma/
-│   │   ├── prisma.module.ts
-│   │   └── prisma.service.ts
-│   └── tasks/
-│       ├── tasks.controller.ts
-│       ├── tasks.module.ts
-│       ├── tasks.service.ts
-│       └── dto/
-│           ├── create-task.dto.ts
-│           └── update-task.dto.ts
-
+└── src/
+    ├── app.module.ts
+    ├── main.ts
+    ├── prisma/
+    │   ├── prisma.module.ts
+    │   └── prisma.service.ts
+    └── tasks/
+        ├── tasks.controller.ts
+        ├── tasks.module.ts
+        ├── tasks.service.ts
+        └── dto/
+            ├── create-task.dto.ts
+            └── update-task.dto.ts
 ```
 
 ## 📝 Funcionalidades do Backend
@@ -105,6 +90,15 @@ backend/
 - **Persistência** usando Prisma ORM e PostgreSQL
 - **Tratamento de erros** centralizado
 - **Estrutura modular** com NestJS (controllers, services, modules)
+- **Containerização** com Docker para deploy simplificado
+
+## 🔗 API Endpoints
+
+- `GET /tasks` - Lista todas as tarefas
+- `GET /tasks/:id` - Busca tarefa por ID
+- `POST /tasks` - Cria nova tarefa
+- `PATCH /tasks/:id` - Atualiza tarefa
+- `DELETE /tasks/:id` - Remove tarefa
 
 ## 👤 Autor
 

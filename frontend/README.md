@@ -12,57 +12,58 @@ O Task Manager permite criar, visualizar, atualizar e excluir tarefas de forma s
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 - [Axios](https://axios-http.com/)
+- [Docker](https://www.docker.com/)
 
-## 🔗 Backend
+## 🐳 Executando com Docker (Recomendado)
 
-O backend está localizado na pasta `../backend` e deve ser iniciado separadamente primeiro, antes do frontend ser iniciado. Consulte o README do backend para instruções.
+A forma recomendada de executar o frontend é através do Docker Compose na raiz do projeto. O frontend será iniciado automaticamente junto com o backend e banco de dados.
 
-## 📦 Instalação
+### Pré-requisitos
 
-1. Clone o repositório
+- [Docker](https://www.docker.com/get-started) instalado
+- [Docker Compose](https://docs.docker.com/compose/install/) instalado
 
-   ```bash
-   git clone https://github.com/mattandrade87/todo-task-manager.git
-   ```
+### 1. Clone o repositório
 
-2. Acesse a pasta do frontend:
-   ```bash
-   cd frontend
-   ```
-3. Instale as dependências:
-   ```bash
-   npm install
-   ```
-4. Configuração das Variáveis de Ambiente: Crie um arquivo .env na raiz da pasta backend. Você pode usar o exemplo abaixo ou o .env.example:
+```bash
+ git clone https://github.com/mattandrade87/todo-task-manager.git
+ cd todo-task-manager
+```
 
-# .env
+### 2. Execute o comando abaixo para subir todos os serviços:
 
-# Substitua os valores conforme suas credenciais do banco
+```bash
+ docker-compose up
+```
 
-VITE_API_URL=http://localhost:3000
+### 3. Acesse a aplicação:
+	- **Frontend**: [http://localhost:5173](http://localhost:5173)
+	- **Backend API**: [http://localhost:3000](http://localhost:3000)
+	- **PostgreSQL**: `localhost:5432`
 
-## 🏃‍♂️ Executando o Projeto
 
-1. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-2. Acesse [http://localhost:5173](http://localhost:5173) no seu navegador.
 
-> **Nota:** Certifique-se de que o backend está rodando para que as requisições funcionem corretamente.
+---
 
 ## ⚙️ Estrutura de Pastas
 
 ```
 frontend/
+├── Dockerfile
 ├── public/                # Arquivos estáticos
 ├── src/
 │   ├── assets/            # Imagens e outros assets
 │   ├── components/        # Componentes React reutilizáveis
+│   │   ├── TaskForm.tsx
+│   │   └── TaskItem.tsx
 │   ├── services/          # Serviços de API
+│   │   └── api.ts
 │   ├── types/             # Tipagens TypeScript
+│   │   └── index.ts
 │   ├── App.tsx            # Componente principal
-│   └── main.tsx           # Ponto de entrada
+│   ├── App.css
+│   ├── main.tsx           # Ponto de entrada
+│   └── index.css
 ├── package.json           # Dependências e scripts
 └── vite.config.ts         # Configuração do Vite
 ```
@@ -74,6 +75,12 @@ frontend/
 - Editar tarefa existente
 - Excluir tarefa
 - Interface responsiva
+- Integração com API REST
+- Hot reload em desenvolvimento
+
+## 🔗 Backend
+
+O backend está localizado na pasta `../backend` e é iniciado automaticamente pelo Docker Compose. Consulte o README do backend para mais informações sobre a API.
 
 ## 👤 Autor
 
